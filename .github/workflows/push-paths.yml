@@ -1,0 +1,18 @@
+name: Use push/paths
+
+on:
+    # Compare the preceeding commit of main -> to the current commit of the main branch.
+    # (Note: To compare changes between the last pushed commit to the remote main branch set `since_last_remote_commit: true`)
+    push:
+        branches:
+            - master
+        paths:
+            - 'docs/**'
+
+jobs:
+    build:
+        runs-on: ubuntu-latest  # windows-latest | macos-latest
+        name: Pushed changes to docs/**
+        steps:
+            - run: |
+                echo "One or more files in the docs folder has changed."
